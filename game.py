@@ -23,3 +23,17 @@ def play_round():
         return "win"
     else:
         return "lose"
+
+def save_scores(scores , filename):
+    with open(filename, "w") as file:
+        scores = json.dump(scores, file)
+
+def load_scores(filename):
+    try:
+        with open(filename, "r") as file:
+            scores = json.load(file)
+        return scores
+
+    except FileNotFoundError:
+        return {"user" : 0, "computer" : 0}
+    
